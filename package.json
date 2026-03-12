@@ -1,0 +1,19 @@
+{
+  "name": "boilerplatetest300",
+  "version": "1.0.0",
+  "description": "A basic HTML, CSS, and JavaScript boilerplate",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.0"
+  }
+}
