@@ -1,5 +1,7 @@
 # boilerplatetest300
 
+![Built with Chiron](https://img.shields.io/badge/Built%20with-Chiron-blue)
+
 A basic HTML, CSS, and JavaScript boilerplate project.
 
 ## Setup
