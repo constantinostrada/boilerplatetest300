@@ -13,3 +13,8 @@ document.getElementById('decrement-btn').addEventListener('click', () => {
     count -= 200;
     counterValue.textContent = count;
 });
+
+document.getElementById('multiply-btn').addEventListener('click', () => {
+    count *= 10;
+    counterValue.textContent = count;
+});
