@@ -5,12 +5,12 @@ let count = 0;
 const counterValue = document.getElementById('counter-value');
 
 document.getElementById('increment-btn').addEventListener('click', () => {
-    count += 200;
+    count += 2000;
     counterValue.textContent = count;
 });
 
 document.getElementById('decrement-btn').addEventListener('click', () => {
-    count -= 200;
+    count -= 3000;
     counterValue.textContent = count;
 });
 
