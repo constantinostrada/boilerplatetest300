@@ -52,3 +52,42 @@ h1 {
 .counter-buttons button:hover {
     background-color: #357abd;
 }
+
+.text-input-container {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 24px;
+}
+
+.text-input-container h2 {
+    margin: 0 0 16px;
+    color: #333;
+}
+
+#text-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#text-input:focus {
+    border-color: #4a90e2;
+}
+
+.char-counter {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #888;
+    text-align: right;
+}

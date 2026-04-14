@@ -18,3 +18,11 @@ document.getElementById('multiply-btn').addEventListener('click', () => {
     count *= 10;
     counterValue.textContent = count;
 });
+
+// Character counter
+const textInput = document.getElementById('text-input');
+const charCount = document.getElementById('char-count');
+
+textInput.addEventListener('input', () => {
+    charCount.textContent = textInput.value.length;
+});
