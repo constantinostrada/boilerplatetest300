@@ -52,3 +52,110 @@ h1 {
 .counter-buttons button:hover {
     background-color: #357abd;
 }
+
+/* ── Contact form ─────────────────────────────────────────── */
+.form-container {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 480px;
+    margin-top: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.required {
+    color: #e53e3e;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 12px;
+    font-size: 15px;
+    font-family: sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.form-group input.is-invalid,
+.form-group textarea.is-invalid {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
+}
+
+.field-error {
+    font-size: 13px;
+    color: #e53e3e;
+    margin-top: 4px;
+    min-height: 18px;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4a90e2;
+    color: white;
+    transition: background-color 0.2s;
+    margin-top: 4px;
+}
+
+#submit-btn:hover:not(:disabled) {
+    background-color: #357abd;
+}
+
+#submit-btn:disabled {
+    background-color: #a0bfdf;
+    cursor: not-allowed;
+}
+
+/* ── Form feedback banners ────────────────────────────────── */
+.form-feedback {
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-feedback--success {
+    background-color: #f0fff4;
+    border: 1px solid #9ae6b4;
+    color: #276749;
+}
+
+.form-feedback--error {
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    color: #9b2c2c;
+}
