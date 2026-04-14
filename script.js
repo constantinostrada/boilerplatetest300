@@ -18,3 +18,8 @@ document.getElementById('multiply-btn').addEventListener('click', () => {
     count *= 10;
     counterValue.textContent = count;
 });
+
+document.getElementById('multiply41-btn').addEventListener('click', () => {
+    count *= 41;
+    counterValue.textContent = count;
+});
