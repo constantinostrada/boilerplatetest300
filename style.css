@@ -52,3 +52,17 @@ h1 {
 .counter-buttons button:hover {
     background-color: #357abd;
 }
+
+.api-docs-link {
+    margin-top: 24px;
+    font-size: 0.9rem;
+}
+
+.api-docs-link a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.api-docs-link a:hover {
+    text-decoration: underline;
+}

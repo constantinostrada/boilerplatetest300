@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "open index.html",
+    "docs": "npx serve . --open",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

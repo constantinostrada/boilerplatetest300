@@ -1,0 +1,365 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "boilerplatetest300 API",
+    "description": "REST API for the boilerplatetest300 counter application. Provides endpoints to retrieve and mutate the current counter value.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Local development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "counter",
+      "description": "Operations on the counter value"
+    }
+  ],
+  "paths": {
+    "/counter": {
+      "get": {
+        "tags": ["counter"],
+        "summary": "Get the current counter value",
+        "description": "Returns the current integer value of the counter.",
+        "operationId": "getCounter",
+        "responses": {
+          "200": {
+            "description": "The current counter value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterResponse"
+                },
+                "example": {
+                  "value": 400
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/counter/increment": {
+      "post": {
+        "tags": ["counter"],
+        "summary": "Increment the counter",
+        "description": "Adds the specified `amount` to the current counter value and returns the updated value. Defaults to `200` if no body is provided.",
+        "operationId": "incrementCounter",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmountBody"
+              },
+              "example": {
+                "amount": 200
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Counter incremented successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterResponse"
+                },
+                "example": {
+                  "value": 600
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "amount must be a number"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/counter/decrement": {
+      "post": {
+        "tags": ["counter"],
+        "summary": "Decrement the counter",
+        "description": "Subtracts the specified `amount` from the current counter value and returns the updated value. Defaults to `200` if no body is provided.",
+        "operationId": "decrementCounter",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AmountBody"
+              },
+              "example": {
+                "amount": 200
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Counter decremented successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterResponse"
+                },
+                "example": {
+                  "value": 200
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "amount must be a number"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/counter/multiply": {
+      "post": {
+        "tags": ["counter"],
+        "summary": "Multiply the counter",
+        "description": "Multiplies the current counter value by the specified `factor` and returns the updated value. Defaults to `10` if no body is provided.",
+        "operationId": "multiplyCounter",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FactorBody"
+              },
+              "example": {
+                "factor": 10
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Counter multiplied successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterResponse"
+                },
+                "example": {
+                  "value": 4000
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "factor must be a number"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/counter/reset": {
+      "post": {
+        "tags": ["counter"],
+        "summary": "Reset the counter",
+        "description": "Resets the counter to zero (or to an optional `value`) and returns the updated value.",
+        "operationId": "resetCounter",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetBody"
+              },
+              "example": {
+                "value": 0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Counter reset successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterResponse"
+                },
+                "example": {
+                  "value": 0
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "value must be a number"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "Internal server error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CounterResponse": {
+        "type": "object",
+        "required": ["value"],
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "The current counter value after the operation",
+            "example": 400
+          }
+        }
+      },
+      "AmountBody": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "description": "The amount to add or subtract. Defaults to 200.",
+            "default": 200,
+            "example": 200
+          }
+        }
+      },
+      "FactorBody": {
+        "type": "object",
+        "properties": {
+          "factor": {
+            "type": "number",
+            "description": "The multiplier to apply to the current value. Defaults to 10.",
+            "default": 10,
+            "example": 10
+          }
+        }
+      },
+      "ResetBody": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "The value to reset the counter to. Defaults to 0.",
+            "default": 0,
+            "example": 0
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Human-readable error message",
+            "example": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
