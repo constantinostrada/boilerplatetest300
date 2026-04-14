@@ -3,17 +3,27 @@
   "version": "1.0.0",
   "description": "A basic HTML, CSS, and JavaScript boilerplate",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "start": "open index.html",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --testPathPatterns=src/",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --testPathPatterns=src/ --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --testPathPatterns=src/ --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@jest/globals": "^30.3.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.0.0",
+    "jest": "^30.3.0",
     "prettier": "^3.0.0"
   }
 }
