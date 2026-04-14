@@ -52,3 +52,86 @@ h1 {
 .counter-buttons button:hover {
     background-color: #357abd;
 }
+
+/* Submit section */
+.submit-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#submit-input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-family: sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    box-sizing: border-box;
+    color: #333;
+    transition: border-color 0.2s;
+}
+
+#submit-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+/* Wrapper keeps the button and tooltip together */
+.submit-btn-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+}
+
+#submit-btn {
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4a90e2;
+    color: white;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+#submit-btn:hover {
+    background-color: #357abd;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    font-weight: normal;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+/* Arrow pointing down from the tooltip */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+}
+
+.submit-btn-wrapper:hover .tooltip {
+    opacity: 1;
+}
