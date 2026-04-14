@@ -1,33 +1,140 @@
-/* Basic CSS styles */
+/* ── Theme tokens ───────────────────────────────────────────────────────────── */
+:root {
+    --color-bg: #f0f0f0;
+    --color-surface: #ffffff;
+    --color-text: #333333;
+    --color-text-muted: #555555;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-btn-primary: #4a90e2;
+    --color-btn-primary-hover: #357abd;
+
+    /* toggle button */
+    --color-toggle-bg: #cccccc;
+    --color-toggle-thumb: #ffffff;
+    --color-toggle-bg-active: #4a90e2;
+}
+
+[data-theme='dark'] {
+    --color-bg: #1a1a2e;
+    --color-surface: #16213e;
+    --color-text: #e0e0e0;
+    --color-text-muted: #a0a0b0;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+    --color-btn-primary: #5a9ff5;
+    --color-btn-primary-hover: #4a8de0;
+
+    /* toggle button */
+    --color-toggle-bg: #4a90e2;
+    --color-toggle-thumb: #ffffff;
+    --color-toggle-bg-active: #4a90e2;
+}
+
+/* ── Global transition for smooth theme switch ──────────────────────────────── */
+*,
+*::before,
+*::after {
+    transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────── */
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.site-header h1 {
+    margin: 0;
+    color: var(--color-text);
+}
+
+/* ── Theme toggle button ────────────────────────────────────────────────────── */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-toggle-bg);
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 1px 4px var(--color-shadow);
+    white-space: nowrap;
+}
+
+.theme-toggle:hover {
+    border-color: var(--color-btn-primary);
+}
+
+/* pill track */
+.theme-toggle__icon {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    background-color: var(--color-toggle-bg);
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: background-color 0.25s ease;
+}
+
+/* thumb */
+.theme-toggle__icon::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-toggle-thumb);
+    border-radius: 50%;
+    transition: transform 0.25s ease;
+}
+
+/* move thumb to the right when dark mode is on */
+[data-theme='dark'] .theme-toggle__icon::after {
+    transform: translateX(16px);
+}
+
+/* ── Headings (legacy standalone h1 kept for safety) ────────────────────────── */
 h1 {
-    color: #333;
+    color: var(--color-text);
 }
 
+/* ── Counter card ───────────────────────────────────────────────────────────── */
 .counter-container {
-    background: white;
+    background: var(--color-surface);
     border-radius: 8px;
     padding: 24px;
     max-width: 300px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .counter-container h2 {
     margin: 0 0 16px;
-    color: #333;
+    color: var(--color-text);
 }
 
 #counter-value {
     font-size: 48px;
     font-weight: bold;
-    color: #333;
+    color: var(--color-text);
     margin-bottom: 20px;
 }
 
@@ -44,11 +151,11 @@ h1 {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #4a90e2;
+    background-color: var(--color-btn-primary);
     color: white;
     transition: background-color 0.2s;
 }
 
 .counter-buttons button:hover {
-    background-color: #357abd;
+    background-color: var(--color-btn-primary-hover);
 }

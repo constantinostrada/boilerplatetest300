@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>boilerplatetest300</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Apply saved theme before first paint to prevent flash of wrong theme
+        (function () {
+            var saved = localStorage.getItem('theme')
+            if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark')
+        })()
+    </script>
 </head>
 <body>
-    <h1>Welcome to boilerplatetest300!</h1>
+    <header class="site-header">
+        <h1>Welcome to boilerplatetest300!</h1>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+            <span class="theme-toggle__label">Dark mode</span>
+        </button>
+    </header>
 
     <div class="counter-container">
         <h2>Counter</h2>
