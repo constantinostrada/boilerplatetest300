@@ -25,10 +25,21 @@ h1 {
 }
 
 #counter-value {
-    font-size: 48px;
+    font-size: 64px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
+    min-height: 80px;
+    line-height: 80px;
+    transition: color 0.2s;
+}
+
+#counter-value.counter-value--positive {
+    color: #27ae60;
+}
+
+#counter-value.counter-value--negative {
+    color: #e74c3c;
 }
 
 .counter-buttons {
@@ -39,16 +50,30 @@ h1 {
 
 .counter-buttons button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     background-color: #4a90e2;
     color: white;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
+    min-width: 56px;
 }
 
 .counter-buttons button:hover {
     background-color: #357abd;
+}
+
+.counter-buttons button:active {
+    transform: scale(0.95);
+}
+
+#reset-btn {
+    background-color: #95a5a6;
+    font-size: 14px;
+}
+
+#reset-btn:hover {
+    background-color: #7f8c8d;
 }
