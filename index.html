@@ -1,24 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boilerplatetest300</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Welcome to boilerplatetest300!</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="counter-card">
+        <h1 class="counter-title">Counter</h1>
 
-    <div class="counter-container">
-        <h2>Counter</h2>
-        <div id="counter-value">0</div>
-        <div class="counter-buttons">
-            <button id="decrement-btn">-200</button>
-            <button id="increment-btn">+200</button>
-            <button id="multiply-btn">×10</button>
+        <div class="counter-display" id="counter-display" aria-live="polite" aria-atomic="true">
+          <span id="counter-value">0</span>
         </div>
+
+        <div class="counter-step">
+          <label for="step-input" class="step-label">Step</label>
+          <div class="step-controls">
+            <button class="step-btn" id="step-decrease" aria-label="Decrease step">−</button>
+            <input id="step-input" class="step-input" type="number" value="1" min="1" aria-label="Step value" />
+            <button class="step-btn" id="step-increase" aria-label="Increase step">+</button>
+          </div>
+        </div>
+
+        <div class="counter-buttons">
+          <button class="btn btn--danger" id="decrement-btn" aria-label="Decrement">
+            <span class="btn-icon">−</span>
+            <span class="btn-label">Decrement</span>
+          </button>
+
+          <button class="btn btn--secondary" id="reset-btn" aria-label="Reset counter">
+            <span class="btn-icon">↺</span>
+            <span class="btn-label">Reset</span>
+          </button>
+
+          <button class="btn btn--primary" id="increment-btn" aria-label="Increment">
+            <span class="btn-icon">+</span>
+            <span class="btn-label">Increment</span>
+          </button>
+        </div>
+
+        <div class="counter-history">
+          <div class="history-header">
+            <span class="history-title">History</span>
+            <button class="clear-history-btn" id="clear-history-btn" aria-label="Clear history">Clear</button>
+          </div>
+          <ul class="history-list" id="history-list">
+            <li class="history-empty">No actions yet</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

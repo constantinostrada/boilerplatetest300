@@ -1,54 +1,404 @@
-/* Basic CSS styles */
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #f0f4f8;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #1a202c;
+  --color-text-muted: #718096;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-danger: #e53e3e;
+  --color-danger-hover: #c53030;
+  --color-secondary: #718096;
+  --color-secondary-hover: #4a5568;
+  --color-positive: #38a169;
+  --color-negative: #e53e3e;
+  --color-neutral: #4f46e5;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --transition: 0.18s ease;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f0f0f0;
+  font-family: var(--font);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
-h1 {
-    color: #333;
+/* ─── Page Layout ───────────────────────────────────────────────────────────── */
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.counter-container {
-    background: white;
-    border-radius: 8px;
-    padding: 24px;
-    max-width: 300px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* ─── Counter Card ──────────────────────────────────────────────────────────── */
+.counter-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px 32px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-.counter-container h2 {
-    margin: 0 0 16px;
-    color: #333;
+/* ─── Title ─────────────────────────────────────────────────────────────────── */
+.counter-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+/* ─── Display ───────────────────────────────────────────────────────────────── */
+.counter-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  min-height: 110px;
+  transition: border-color var(--transition);
+}
+
+.counter-display.is-positive {
+  border-color: var(--color-positive);
+}
+
+.counter-display.is-negative {
+  border-color: var(--color-danger);
 }
 
 #counter-value {
-    font-size: 48px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--color-neutral);
+  transition:
+    color var(--transition),
+    transform var(--transition);
 }
 
+#counter-value.is-positive {
+  color: var(--color-positive);
+}
+
+#counter-value.is-negative {
+  color: var(--color-negative);
+}
+
+#counter-value.bump {
+  transform: scale(1.12);
+}
+
+/* ─── Step Controls ─────────────────────────────────────────────────────────── */
+.counter-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--color-text-muted);
+}
+
+.step-controls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.step-btn {
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  font-weight: 700;
+  background: var(--color-bg);
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-btn:hover {
+  background-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.step-btn:active {
+  background-color: #cbd5e0;
+}
+
+.step-input {
+  width: 72px;
+  height: 36px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font);
+  border: none;
+  border-left: 1.5px solid var(--color-border);
+  border-right: 1.5px solid var(--color-border);
+  outline: none;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.step-input::-webkit-inner-spin-button,
+.step-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.step-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ─── Action Buttons ────────────────────────────────────────────────────────── */
 .counter-buttons {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
-.counter-buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    background-color: #4a90e2;
-    color: white;
-    transition: background-color 0.2s;
+.btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 8px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font);
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
-.counter-buttons button:hover {
-    background-color: #357abd;
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-icon {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.btn-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn--danger {
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+.btn--danger:hover {
+  background-color: var(--color-danger-hover);
+}
+
+.btn--secondary {
+  background-color: #edf2f7;
+  color: var(--color-secondary);
+}
+
+.btn--secondary:hover {
+  background-color: #e2e8f0;
+  color: var(--color-secondary-hover);
+}
+
+/* ─── History ───────────────────────────────────────────────────────────────── */
+.counter-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.history-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--color-text-muted);
+}
+
+.clear-history-btn {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+.clear-history-btn:hover {
+  background-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.history-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.history-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.history-empty {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 12px 0;
+  font-style: italic;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 13px;
+  animation: slideIn 0.18s ease;
+}
+
+.history-item__action {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.history-item__action.increment {
+  color: var(--color-positive);
+}
+
+.history-item__action.decrement {
+  color: var(--color-negative);
+}
+
+.history-item__action.reset {
+  color: var(--color-secondary);
+}
+
+.history-item__value {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .counter-card {
+    padding: 28px 20px 24px;
+    gap: 22px;
+  }
+
+  #counter-value {
+    font-size: 56px;
+  }
+
+  .btn-label {
+    display: none;
+  }
+
+  .btn {
+    padding: 14px 6px;
+  }
 }
