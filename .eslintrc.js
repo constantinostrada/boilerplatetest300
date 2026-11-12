@@ -14,4 +14,13 @@ module.exports = {
   rules: {
     // Add any specific rules here
   },
+  overrides: [
+    {
+      files: ['server/**/*.js'],
+      env: {
+        node: true,
+        browser: false,
+      },
+    },
+  ],
 };
